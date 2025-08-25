@@ -1,0 +1,49 @@
+/*
+REACT
+R-repeat question
+
+Given problem says that we have n no. of coins from that coins we have to produce sum equal to x which includes minimum no. of coins for making that sum if there is no combination which results desired sum have to return -1 
+
+
+E-example
+for eg, if n=3 and having target sum=10
+        given coins are 1,2 5
+	then possible combinations will be
+	[5,5]
+	[2,2,1,5,5]
+	[1,1,1,1,1,5]...
+ then out of which minimum coins will be 2 therefore our output will be 2
+
+A-Algo
+we make combinations of all the coins which has sum=x and recursively call picking and non-picking of coin repeatedly then finding minimum of these two calls pick & non pick then returning it as a minimum no. of coins required for making required target
+
+C-code
+int minicoin(vector<int> &coins, vector<int> &ans, int n, int i, int amt)
+{
+    if (amt == i)
+    {
+        return ans.size();
+    }
+    if (amt < 0 || i == n)
+    {
+        return INT_MAX;
+    }
+    // pick
+    ans.push_back(coins[i]);
+    int pick = minicoin(coins, ans, n, i, amt - coins[i]);
+    ans.pop_back();
+
+    int non_pick = minicoin(coins, ans, n, i + 1, amt);
+    return min(pick, non_pick);
+}
+
+T-test case
+n=3 x=11
+1 5 7
+output=3
+
+
+
+
+
+
