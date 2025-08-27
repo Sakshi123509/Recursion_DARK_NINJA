@@ -1,0 +1,70 @@
+/*
+REACT
+R-repeat question
+In given problem we hve given n coins and we need to find distinct ways to find sum by combining given coins
+
+E-example
+for ex. if we have 2,3,5 ans our target is 9
+        it can be done by 8 ways-
+        2+2+5
+        2+5+2
+        5+2+2
+        3+3+3
+        2+2+2+3
+        2+2+3+2
+        2+3+2+2
+        3+2+2+2
+
+
+A-ALGO:
+we take a loop which runs of n no. and we find in how many ways of combinations we get sum as target
+-base case -if target is achieved i.e target=0 returning 0
+-int a loop adding waays of combinations which give sum as target
+--then retunring ways
+
+
+
+C-CODE:
+#include <bits/stdc++.h>
+using namespace std;
+
+int combo(vector<int> &nums, int target, int n)
+{
+
+    if (target == 0)
+    {
+        return 1;
+    }
+    if (target < 0)
+    {
+        return 0;
+    }
+
+    int ways=0;
+    for (int j = 0; j < n; j++)
+    {
+        ways += combo(nums, target - nums[j], n);
+    }
+    return ways;
+}
+
+int main()
+{
+    int n, x;
+    cin >> n;
+    cin >> x;
+    vector<int> arr(n);
+    for (int i = 0; i < n; i++)
+    {
+        cin >> arr[i];
+    }
+    int ans = combo(arr, x, n);
+    cout << ans;
+}
+
+T: TEST:
+INPUT:
+3 9
+2 3 4
+
+OUTPUT:  11
