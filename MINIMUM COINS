@@ -16,13 +16,7 @@ repletion of Elem in individual allowed
 
 A-ALGO:
 
-We need to find minimum coins needed for making sum as target
-for that
-- we considering to variable take and nontake 
-- we pick element and remain at the same index(initially it is 0) by subtracting that element from target
--we don't pick element and just move to next index by taking target as it is
--base case- if our target becomes zero then we will print the cnt as 0
--at last finding min from take and non take
+
 
 
 
