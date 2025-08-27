@@ -1,24 +1,24 @@
 /*
 REACT
-R-repeat question
+R-READ
+we have given n coins we need to produce sum by these coins and printing minimum no. of coins which given sum as target
 
-Given problem says that we have n no. of coins from that coins we have to produce sum equal to x we have to return no. of possible distinct way we get output as x using given coins
 
-E-example
-for eg, if n=3 and having target sum=9
-        given coins are 2 3 5
-	then possible combinations will be
-	[2,2,5]
-	[3,3,3]
-	[2,2,2,3]
-repletion of Elem in individual allowed 
+E-Eg
+we have given 1,5,7 with target=11
+no. of minimum coins needed will be three as 
+5+5+1
 
 
 A-ALGO:
 
-
-
-
+We need to find minimum coins needed for making sum as target
+for that
+- we considering to variable take and nontake 
+- we pick element and remain at the same index(initially it is 0) by subtracting that element from target
+-we don't pick element and just move to next index by taking target as it is
+-base case- if our target becomes zero then we will print the cnt as 0
+-at last finding min from take and non take
 
 
 C-CODE:
