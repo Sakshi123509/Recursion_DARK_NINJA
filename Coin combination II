@@ -16,8 +16,12 @@ repletion of Elem in individual allowed
 
 A-ALGO:
 
-
-
+we take two varibale to count no. of combinations needed to give sum as target
+base case-if target==0 then returning 1 count
+pick ans non pick
+-pick will take elem and substacrct from target and remain on same index(initially zero)
+-non pick will just increase index 
+-the total no. of combintions will be sum of pick and non pick
 
 
 
