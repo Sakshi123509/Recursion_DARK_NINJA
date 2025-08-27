@@ -13,9 +13,11 @@ no. of steps=5
 
 A-ALGO:
 
-we have n base case would be if n==0 then returning 0
-take variable ans and temp for storing answer and n value respectively
--then finding digits and decreasing size of n by recursively calling function (n-digit)
+we have base case as if n==0 return 0 
+-finding maximum digit
+-remove from n
+-then call again to function
+-return count i.e 1+ the recursive function
 
 
 
@@ -23,32 +25,30 @@ C-CODE:
 
 #include <bits/stdc++.h>
 using namespace std;
+
 int remove(int n)
 {
+
     if (n == 0)
     {
         return 0;
     }
-    int ans = INT_MAX;
     int temp = n;
+    int digit = INT_MIN;
     while (temp > 0)
     {
-        int d = temp % 10;
+        digit = max(digit, temp % 10);
         temp /= 10;
-        if (d > 0)
-        {
-            ans = min(ans, 1 + remove(n - d));
-        }
     }
-    return ans;
+    return 1 + remove(n - digit);
 }
 
 int main()
 {
-    int n;
+    int n, x;
     cin >> n;
-    int i = remove(n);
-    cout << i;
+    int ans = remove(n);
+    cout << ans;
 }
 
 T: TEST:
