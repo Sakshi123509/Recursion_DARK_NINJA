@@ -1,0 +1,58 @@
+/*
+REACT
+R-repeat question
+
+we are given n  and we need to find no. of steps require to convert n to 0 by removing digits
+
+
+for eg, if n=27
+27->20->18->10->9->0
+
+no. of steps=5
+
+
+A-ALGO:
+
+we have n base case would be if n==0 then returning 0
+take variable ans and temp for storing answer and n value respectively
+-then finding digits and decreasing size of n by recursively calling function (n-digit)
+
+
+
+C-CODE:
+
+#include <bits/stdc++.h>
+using namespace std;
+int remove(int n)
+{
+    if (n == 0)
+    {
+        return 0;
+    }
+    int ans = INT_MAX;
+    int temp = n;
+    while (temp > 0)
+    {
+        int d = temp % 10;
+        temp /= 10;
+        if (d > 0)
+        {
+            ans = min(ans, 1 + remove(n - d));
+        }
+    }
+    return ans;
+}
+
+int main()
+{
+    int n;
+    cin >> n;
+    int i = remove(n);
+    cout << i;
+}
+
+T: TEST:
+INPUT:
+27
+
+OUTPUT: 5
