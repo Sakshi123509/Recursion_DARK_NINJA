@@ -1,0 +1,67 @@
+/*
+REACT
+R-repeat question
+
+Given problem says that we have n no. of coins from that coins we have to produce sum equal to x we have to return no. of possible distinct way we get output as x using given coins
+
+E-example
+for eg, if n=3 and having target sum=9
+        given coins are 2 3 5
+	then possible combinations will be
+	[2,2,5]
+	[3,3,3]
+	[2,2,2,3]
+repletion of Elem in individual allowed 
+
+
+A-ALGO:
+
+
+
+
+
+
+C-CODE:
+#include <bits/stdc++.h>
+using namespace std;
+ 
+int combo(vector<int> &nums,
+          int target, int i, int n)
+{
+    if (target < 0 || i == n)
+    {
+        return 0;
+    }
+    if (target == 0)
+    {
+        return 1;
+    }
+ 
+    // pick
+    int pick = combo(nums, target - nums[i], i, n);
+ 
+    // nonpick
+    int nonpick = combo(nums, target, i + 1, n);
+    return (pick + nonpick);
+}
+ 
+int main()
+{
+    int n, x;
+    cin >> n;
+    cin >> x;
+    vector<int> arr(n);
+    for (int i = 0; i < n; i++)
+    {
+        cin >> arr[i];
+    }
+    int answer = combo(arr, x, 0, n);
+    cout << answer;
+
+
+T: TEST:
+INPUT:
+3 9
+2 3 5
+
+OUTPUT:  3
